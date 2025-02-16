@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Event Delegation Example</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ text-align: center;
+ margin: 50px;
+ }
+ ul {
+ list-style: none;
+ padding: 0;
+ }
+ li {
+ padding: 10px;
+ margin: 5px;
+ background: rgb(227, 130, 163);
+ cursor: pointer;
+ border-radius: 5px;
+ }
+ li:hover {
+ background: deepskyblue;
+ }
+ button {
+ padding: 10px 15px;
+ font-size: 16px;
+ background: green;
+ color: white;
+ border: none;
+ cursor: pointer;
+ border-radius: 5px;
+ margin-top: 10px;
+ }
+ button:hover {
+ background: darkgreen;
+ }
+ </style>
+</head>
+<body>
+ <h2>Event Delegation Example</h2>
+ <ul id="item-list">
+ <li>Item 1</li>
+ <li>Item 2</li>
+ <li>Item 3</li>
+ </ul>
+ <button id="add-item">Add New Item</button>
+ <script>
+ // Event Delegation: Handle clicks on list items
+ document.getElementById("item-list").addEventListener("click", function(event) {
+ if (event.target.tagName === "LI") {
+ alert(event.target.textContent + " clicked!");
+ }
+ });
+ // Adding new items dynamically
+ document.getElementById("add-item").addEventListener("click", function() {
+ const newItem = document.createElement("li");
+ newItem.textContent = "New Item ";
+ document.getElementById("item-list").appendChild(newItem);
+ });
+ </script>
+</body>
+</html>
